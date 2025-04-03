@@ -1,4 +1,4 @@
-name: Deploy AWS Lambdra
+name: Deploy AWS Lambda
 
 on:
   push: 
@@ -20,14 +20,14 @@ jobs:
 
     - name: Install Dependencies #Installs Packages
       run: |
-        python -m pop install upgrade pop
-        pop install -r lambda/requirements.txt -t lambda/
+        python -m pip install --upgrade pip
+        pip install -r lambda/requirements.txt -t lambda/
 
     - name: Configure AWS Creds #Sets up AWS Creds
       uses: aws-actions/configure-aws-credentials@v1
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region: us-east-1
 
     - name: Deploy Lambda Function # Zips Lambda Directory and Updates Lambda Function
