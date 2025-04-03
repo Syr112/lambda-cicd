@@ -11,10 +11,10 @@ jobs:
   deploy-lambda: # name of our job
     runs-on: ubuntu-latest #Sets or specifies the runner
     steps:
-    - uses: actions/checkout@v2
-    
+    - uses: actions/checkout@v4
+
     - name: Set Up Python #Sets up python environment
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v4
       with:
         python-version: '3.12'
 
@@ -35,3 +35,4 @@ jobs:
         cd lambda
         zip -r lambda.zip .
         aws lambda update-function-code --function-name my-test-cicd-lambda --zip-file file://lambda.zip
+
