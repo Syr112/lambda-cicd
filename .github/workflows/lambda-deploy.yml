@@ -35,4 +35,6 @@ jobs:
         zip -r lambda.zip lambda/
         aws lambda update-function-code --function-name my-test-cicd-lambda --zip-file fileb://lambda.zip
 
+        
+# force rerun because GitHub was using old workflow
 
